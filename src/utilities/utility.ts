@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import csv from 'csv-parser';
 import {log} from 'console';
 
-export const csvfileread = (file: string, fileseparator :any) => {
+export const csvFileRead = (file: string, fileseparator :any) => {
 const results: any[] = [];
 try {
     fs.createReadStream(__dirname + '/../../input/'+file)

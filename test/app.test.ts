@@ -1,12 +1,12 @@
-
 import { API_ERRORS } from '../src/types/app.types';
-import {csvfileread} from '../src/utilities/utility';
-import {log} from 'console';
+import { csvFileRead } from '../src/utilities/utility';
+import { stdout } from 'test-console';
+import { assert } from 'chai';
 
 
-it('fileError', () => {
-    // const consoleSpy = jest.spyOn(console, 'log');
-    console.log = jest.fn();
-    csvfileread('input2.csv',',');
-    expect(console.log).toEqual(API_ERRORS.FILE_ERROR.message);
+it('fileerror',() => {
+    var output = stdout.inspectSync(function() {
+        csvFileRead('input2.csv',';');
+    });
+    assert.deepEqual(output, [ API_ERRORS.FILE_ERROR.message + "\n" ]);
 })
